@@ -22,7 +22,7 @@ public class Cipher
     
     public static boolean isLowerCase(char letter)  /*this method will return true if the input is a lowercase letter.*/
     {
-        if((letter>='a' && letter<='z') || letter == ' ')
+        if(letter>='a' && letter<='z')
         {
             return true;
         }
