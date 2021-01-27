@@ -34,6 +34,10 @@ public class Cipher
     
     public static boolean isLowerCase(String str)   /*this method will be similar, but will check a string instead of single char.*/
     {
+	if(str.length()==0)	/*an empty string should be valid.*/
+        {
+            return true;
+        }
         int a = 0;
         while(a<str.length())    /*loop through and make sure each character is valid, starting at index 0*/
         {
