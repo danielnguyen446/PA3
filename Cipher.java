@@ -14,7 +14,7 @@
  * The second part encodes and decodes a single character by performing a caesar shift.
  * 
  */
-public class Main
+public class Cipher
 {
     /*Part 1:These methods check validity of the input*/
     
