@@ -103,7 +103,7 @@ public class Cipher
     
     public static String vigenereEncode(String plaintext, String key)
     {
-        if(isLowerCase(plaintext) && isLowerCase(key))
+        if(isLowerCase(plaintext) && isLowerCase(key) && key.length()!=0)
         {
             String ciphertext="";
             int a=0;
