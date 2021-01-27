@@ -98,22 +98,29 @@ public class Cipher
     }
 
     
-    /*Part 3: performs the Vigenere cipher on an entire string and uses a string as the key.
+    /*Part 3: performs the Vigenere cipher on an entire string and uses a string as the key.*/
     
     public static String vigenereEncode(String plaintext, String key)
     {
-        String ciphertext;
+        String ciphertext="";
         int a=0;
         while(a<plaintext.length())
-        {   //if the key is less letters than the message, it will keep looping throught the key.
-            ciphertext.charAt(a) = caesarShiftEncode(plaintext.charAt(a), key.charAt(a%(key.length())));
+        {   /*if the key is less letters than the message, it will keep looping throught the key.*/
+            ciphertext=ciphertext + caesarShiftEncode(plaintext.charAt(a), key.charAt(a%(key.length())));
             a++;
         }
+        return ciphertext;
     }
     
     public static String vigenereDecode(String ciphertext, String key)
     {
-        
+        String plaintext="";
+        int a=0;
+        while(a<plaintext.length())
+        {   /*if the key is less letters than the message, it will keep looping throught the key.*/
+            plaintext=plaintext + caesarShiftDecode(ciphertext.charAt(a), key.charAt(a%(key.length())));
+            a++;
+        }
+        return plaintext;
     }
- 	*/
-}
+    
