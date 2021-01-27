@@ -7,20 +7,22 @@
  * This file contains code that performs classical ciphers to encrypt and decrypt text.
  * It will implement various static methods as well as method name overloading.
  */
- 
+
+import java.util.Scanner;
 
 /**
  * This class contains the methods for parts 1, 2, and 3. The first part is to check validity of the input.
  * The second part encodes and decodes a single character by performing a caesar shift.
- * 
+ * The third part performs the Vigenere cipher on an entire string and uses a string as the key.
  */
 public class Cipher
 {
+    
     /*Part 1:These methods check validity of the input*/
     
     public static boolean isLowerCase(char letter)  /*this method will return true if the input is a lowercase letter.*/
     {
-        if(letter>=97 && letter<=122)
+        if(letter>='a' && letter<='z')
         {
             return true;
         }
@@ -51,43 +53,67 @@ public class Cipher
     
     public static char caesarShiftEncode(char plaintext, char key)
     {
-        if(isLowercase(plaintext))  /*if the character is valid, it should be encoded. Otherwise, it is simply returned*/
+        if(isLowerCase(plaintext))  /*if the character is valid, it should be encoded. Otherwise, it is simply returned.*/
         {
-            plaintext = plaintext + key;    /*use formulation 2: treat letters as integers.*/
-            if(plaintext > 'z') /*if the letter got past z, it gets the ascii value of'a' subtracted from it so that it cycles back*/
-		        {
-			        plaintext = plaintext - 'z' + 'a' - 1;
-		        }
+        	String alphabet = "abcdefghijklmnopqrstuvwxyz"; /*declare an alphabet*/
+        	/*initialize integer variables to convert char to number from 0-27*/
+        	int plaintextValue=plaintext - 'a';
+        	int keyValue=key - 'a';
+            
+            	int outputValue = plaintextValue + keyValue; 
+            	if(outputValue > 'z') /*if the letter got past 25(z), use the remainder. z-a gives 25*/
+		{
+			outputValue = outputValue%('z'-'a');
+		}
+		char output = alphabet.charAt(outputValue); /*return the letter that corresponds to the value*/
+		return output;
         }
-		return plaintext;
+        else
+        {
+            	return plaintext;
+	}
     }
     
     public static char caesarShiftDecode(char ciphertext, char key)
     {
-        if(isLowercase(ciphertext))  /*if the character is valid, it should be decoded. Otherwise, it is simply returned*/
+        if(isLowerCase(ciphertext))  /*if the character is valid, it should be encoded. Otherwise, it is simply returned.*/
         {
-            /*algorithm to encrypt, but in reverse*/
-            ciphertext = ciphertext - key;  /*decrypting is equivalent to subtraction.*/
-            if(ciphertext < 'a')
-		        {
-			        ciphertext = (ciphertext - 'a') + 'z' + 1;
-		        }
+            	String alphabet = "abcdefghijklmnopqrstuvwxyz"; /*declare an alphabet*/
+            	/*initialize integer variables to convert char to number from 0-27*/
+            	int ciphertextValue=ciphertext - 'a';
+            	int keyValue=key - 'a';
+
+           	int outputValue = ciphertextValue - keyValue; 
+            	if(outputValue < 0) /*if the letter got past 0(a), use the remainder*/
+		{
+			outputValue = outputValue%('z'-'a');
+		}
+		char output = alphabet.charAt(outputValue); /*return the letter that corresponds to the value*/
+		return output;
         }
-		    return plaintext;
+        else
+        {
+            return ciphertext;
+        }
     }
+
     
-    /*Part 3: 
+    /*Part 3: performs the Vigenere cipher on an entire string and uses a string as the key.
     
-    public static StringvigenereEncode(String plaintext, String key)
+    public static String vigenereEncode(String plaintext, String key)
     {
+        String ciphertext;
         int a=0;
-        for(a;a<plaintext.length();a++)
-        {
-            
+        while(a<plaintext.length())
+        {   //if the key is less letters than the message, it will keep looping throught the key.
+            ciphertext.charAt(a) = caesarShiftEncode(plaintext.charAt(a), key.charAt(a%(key.length())));
+            a++;
         }
     }
-    public static StringvigenereDecode(String ciphertext, String key)
+    
+    public static String vigenereDecode(String ciphertext, String key)
     {
         
-    }*/
+    }
+ 	*/
 }
