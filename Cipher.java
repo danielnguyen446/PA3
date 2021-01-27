@@ -102,27 +102,40 @@ public class Cipher
     
     public static String vigenereEncode(String plaintext, String key)
     {
-        String ciphertext="";
-        int a=0;
-        while(a<plaintext.length())
-        {   /*if the key is less letters than the message, it will keep looping throught the key.*/
-            ciphertext=ciphertext + caesarShiftEncode(plaintext.charAt(a), key.charAt(a%(key.length())));
-            a++;
+        if(isLowerCase(plaintext) && isLowerCase(key))
+        {
+            String ciphertext="";
+            int a=0;
+            while(a<plaintext.length())
+            {   /*if the key is less letters than the message, it will keep looping throught the key.*/
+                ciphertext=ciphertext + caesarShiftEncode(plaintext.charAt(a), key.charAt(a%(key.length())));
+                a++;
+            }
+            return ciphertext;
         }
-        return ciphertext;
+        else
+        {
+            return plaintext;
+        }
     }
     
     public static String vigenereDecode(String ciphertext, String key)
     {
-        String plaintext="";
-        int a=0;
-        while(a<plaintext.length())
-        {   /*if the key is less letters than the message, it will keep looping throught the key.*/
-            plaintext=plaintext + caesarShiftDecode(ciphertext.charAt(a), key.charAt(a%(key.length())));
-            a++;
+        if(isLowerCase(ciphertext) && isLowerCase(key))
+        {
+            String plaintext="";
+            int a=0;
+            while(a<plaintext.length())
+            {   /*if the key is less letters than the message, it will keep looping throught the key.*/
+                plaintext=plaintext + caesarShiftDecode(ciphertext.charAt(a), key.charAt(a%(key.length())));
+                a++;
+            }
+            return plaintext;
         }
-        return plaintext;
+        else
+        {
+            return ciphertext;
+        }
     }
-    
     
 }
