@@ -15,7 +15,7 @@ import java.util.Scanner;
  * The second part encodes and decodes a single character by performing a caesar shift.
  * The third part performs the Vigenere cipher on an entire string and uses a string as the key.
  */
-public class Cipher
+public class Main
 {
     
     /*Part 1:These methods check validity of the input*/
@@ -55,41 +55,41 @@ public class Cipher
     {
         if(isLowerCase(plaintext))  /*if the character is valid, it should be encoded. Otherwise, it is simply returned.*/
         {
-        	String alphabet = "abcdefghijklmnopqrstuvwxyz"; /*declare an alphabet*/
-        	/*initialize integer variables to convert char to number from 0-27*/
-        	int plaintextValue=plaintext - 'a';
-        	int keyValue=key - 'a';
+            String alphabet = "abcdefghijklmnopqrstuvwxyz"; /*declare an alphabet*/
+            /*initialize integer variables to convert char to number from 0-27*/
+            int plaintextValue=plaintext - 'a';
+            int keyValue=key - 'a';
             
-            	int outputValue = plaintextValue + keyValue; 
-            	if(outputValue > 'z') /*if the letter got past 25(z), use the remainder. z-a gives 25*/
-		{
-			outputValue = outputValue%('z'-'a');
-		}
-		char output = alphabet.charAt(outputValue); /*return the letter that corresponds to the value*/
-		return output;
+            int outputValue = plaintextValue + keyValue; 
+            if(outputValue > 'z') /*if the letter got past 25(z), use the remainder. z-a gives 25*/
+		    {
+			    outputValue = outputValue%('z'-'a');
+		    }
+		    char output = alphabet.charAt(outputValue); /*return the letter that corresponds to the value*/
+		    return output;
         }
         else
         {
-            	return plaintext;
-	}
+            return plaintext;
+        }
     }
     
     public static char caesarShiftDecode(char ciphertext, char key)
     {
         if(isLowerCase(ciphertext))  /*if the character is valid, it should be encoded. Otherwise, it is simply returned.*/
         {
-            	String alphabet = "abcdefghijklmnopqrstuvwxyz"; /*declare an alphabet*/
-            	/*initialize integer variables to convert char to number from 0-27*/
-            	int ciphertextValue=ciphertext - 'a';
-            	int keyValue=key - 'a';
+            String alphabet = "abcdefghijklmnopqrstuvwxyz"; /*declare an alphabet*/
+            /*initialize integer variables to convert char to number from 0-27*/
+            int ciphertextValue=ciphertext - 'a';
+            int keyValue=key - 'a';
 
-           	int outputValue = ciphertextValue - keyValue; 
-            	if(outputValue < 0) /*if the letter got past 0(a), use the remainder*/
-		{
-			outputValue = outputValue%('z'-'a');
-		}
-		char output = alphabet.charAt(outputValue); /*return the letter that corresponds to the value*/
-		return output;
+            int outputValue = ciphertextValue - keyValue; 
+            if(outputValue < 0) /*if the letter got past 0(a), use the remainder*/
+		    {
+			    outputValue = outputValue%('z'-'a');
+		    }
+		    char output = alphabet.charAt(outputValue); /*return the letter that corresponds to the value*/
+		    return output;
         }
         else
         {
@@ -124,3 +124,5 @@ public class Cipher
         return plaintext;
     }
     
+    
+}
