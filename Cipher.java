@@ -53,7 +53,7 @@ public class Cipher
     
     public static char caesarShiftEncode(char plaintext, char key)
     {
-        if(isLowerCase(plaintext))  /*if the character is valid, it should be encoded. Otherwise, it is simply returned.*/
+        if(isLowerCase(plaintext)&& isLowerCase(key))  /*if the character is valid, it should be encoded. Otherwise, it is simply returned.*/
         {
             String alphabet = "abcdefghijklmnopqrstuvwxyz"; /*declare an alphabet*/
             /*initialize integer variables to convert char to number from 0-27*/
@@ -76,7 +76,7 @@ public class Cipher
     
     public static char caesarShiftDecode(char ciphertext, char key)
     {
-        if(isLowerCase(ciphertext))  /*if the character is valid, it should be encoded. Otherwise, it is simply returned.*/
+        if(isLowerCase(ciphertext) && isLowerCase(key))  /*if the character is valid, it should be encoded. Otherwise, it is simply returned.*/
         {
             String alphabet = "abcdefghijklmnopqrstuvwxyz"; /*declare an alphabet*/
             /*initialize integer variables to convert char to number from 0-27*/
@@ -97,6 +97,7 @@ public class Cipher
         }
     }
 
+    
     
     /*Part 3: performs the Vigenere cipher on an entire string and uses a string as the key.*/
     
