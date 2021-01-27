@@ -44,6 +44,7 @@ public class Cipher
             else
             {
                 return false;   /*otherwise, return false*/
+		break;
             }
         }
         return true;    /*return true if it can get to the end of the string*/
