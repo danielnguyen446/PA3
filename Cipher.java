@@ -123,7 +123,7 @@ public class Cipher
         {
             String plaintext="";
             int a=0;
-            while(a<plaintext.length())
+            while(a<ciphertext.length())
             {   /*if the key is less letters than the message, it will keep looping throught the key.*/
                 plaintext=plaintext + caesarShiftDecode(ciphertext.charAt(a), key.charAt(a%(key.length())));
                 a++;
