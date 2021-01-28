@@ -75,7 +75,7 @@ public class Cipher
         }
     }
     
-    public static char caesarShiftDecode(char ciphertext, char key)
+     public static char caesarShiftDecode(char ciphertext, char key)
     {
         if(isLowerCase(ciphertext) && isLowerCase(key))  /*if the character is valid, it should be encoded. Otherwise, it is simply returned.*/
         {
@@ -84,14 +84,19 @@ public class Cipher
             	int ciphertextValue=ciphertext - 'a';
             	int keyValue=key - 'a';
 
-            	int outputValue = (ciphertextValue - keyValue)%(alphabet.length());  /*shift the letter depending on the key. loops back if goes too far.*/
-
+            	int outputValue = (ciphertextValue - keyValue);  /*shift the letter depending on the key.*/
+            
+            	if(outputValue<0)   /*if it is out of bounds, put it back to z*/
+            	{
+               		outputValue = alphabet.length() + outputValue;
+            	}
+            
 		char output = alphabet.charAt(outputValue); /*return the letter that corresponds to the value*/
 		return output;
         }
         else
         {
-        	return ciphertext;
+            return ciphertext;
         }
     }
 
