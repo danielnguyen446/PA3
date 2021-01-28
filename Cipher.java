@@ -53,7 +53,7 @@ public class Cipher
         return true;    /*return true if it can get to the end of the string*/
     }
     
-    /*Part 2: These methods below encode and decode a single character by performing a caesar shift.*/
+      /*Part 2: These methods below encode and decode a single character by performing a caesar shift.*/
     
     public static char caesarShiftEncode(char plaintext, char key)
     {
@@ -64,17 +64,14 @@ public class Cipher
             	int plaintextValue=plaintext - 'a';
             	int keyValue=key - 'a';
             
-            	int outputValue = plaintextValue + keyValue; 
-            	if(outputValue > 'z') /*if the letter got past 25(z), use the remainder. z-a gives 25*/
-		{
-			outputValue = outputValue%(alphabet.length());
-		}
+            	int outputValue = (plaintextValue + keyValue)%(alphabet.length()); /*shift the letter depending on the key. loops back if goes too far.*/
+
 		char output = alphabet.charAt(outputValue); /*return the letter that corresponds to the value*/
 		return output;
         }
         else
         {
-            return plaintext;
+        	return plaintext;
         }
     }
     
@@ -87,20 +84,17 @@ public class Cipher
             	int ciphertextValue=ciphertext - 'a';
             	int keyValue=key - 'a';
 
-            	int outputValue = ciphertextValue - keyValue; 
-            	if(outputValue < 0) /*if the letter got past 0(a), use the remainder*/
-		{
-			outputValue = outputValue%(alphabet.length());
-		}
+            	int outputValue = (ciphertextValue - keyValue)%(alphabet.length());  /*shift the letter depending on the key. loops back if goes too far.*/
+
 		char output = alphabet.charAt(outputValue); /*return the letter that corresponds to the value*/
 		return output;
         }
         else
         {
-            return ciphertext;
+        	return ciphertext;
         }
     }
-    
+
     
     /*Part 3: performs the Vigenere cipher on an entire string and uses a string as the key.*/
     
@@ -119,7 +113,7 @@ public class Cipher
         }
         else
         {
-            return null;
+            return null;   /*don't attempt if invalid*/
         }
     }
     
@@ -138,7 +132,7 @@ public class Cipher
         }
         else
         {
-            return null;
+            return null;   /*don't attempt if invalid*/
         }
     }
     
